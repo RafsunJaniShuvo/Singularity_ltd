@@ -53,23 +53,30 @@ class userController extends Controller
     }
 
     //userUpdate
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $data = User::find($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->password = $request->password;
-        $data->update();
-        return redirect()->route('user.manage')->with('status','user updated successfully');
-
+       
+        User::where('id',$request->up_id)->update([
+            'name' => $request->up_name,
+            'email' => $request->up_email,
+            'password' =>$request->up_pass,
+        ]);
+        
+    // $product = Product::find($request->up_id);
+    // dd($product);
+    return response()->json([
+        'status' => 'success',
+    ]);
 
     }
 
     //userDelete
     public function delete($id)
     {
+        //dd($request);
         $data = User::find($id);
         $data->delete();
-        return redirect()->route('user.manage')->with('status','user deleted successfully');
+        return ["result"=>"Deleted user"];
+       // return redirect()->route('user.manage')->with('status','user deleted successfully');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\outlet\outletController;
+use App\Http\Controllers\User\userController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/add-user',[userController::class,'index'])->name('adduser');
+    Route::get('/manage-user',[userController::class,'manage'])->name('user.manage');
+    Route::get('/edit-user/{id}',[userController::class,'edit'])->name('user.edit');
+    
+    
+    
+    Route::get('/add-outlet',[outletController::class,'index'])->name('addoutlet');
+});
+
+
 require __DIR__.'/auth.php';
 
-Route::get('/google-map',[outletController::class,'map']);
+
+
+// Route::get('/google-map',[outletController::class,'map']);

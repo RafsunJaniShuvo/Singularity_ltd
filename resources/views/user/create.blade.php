@@ -59,7 +59,7 @@
                 let name =$('#name').val();
                 let email = $('#email').val();
                 let pass = $('#pass').val();
-                //console.log(name,email,pass);
+                console.log(name,email,pass);
                 $.ajax({
                     url:"{{route('user.store')}}",
                     method : 'POST',
@@ -71,10 +71,10 @@
                         }
                     },
                     error:function(err)
-              {
-                    alert(err);
-                
-              }
+                    {
+                            alert(err);
+                        
+                    }
                 })
             })
           

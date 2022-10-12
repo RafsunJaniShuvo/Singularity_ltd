@@ -18,25 +18,27 @@ class outletController extends Controller
    //store data into user table
    public function store(Request $request)
    {
-       //dd($request->all());
-       $outlet=new Outlet();
+       //dd($request->toArray());
+      $outlet=new Outlet();
+      
        $outlet->name = $request->name;
-      //dd($outlet->name);
-       $outlet->phone = $request->phone;
-       $outlet->latitude = $request->latitude;
-       $outlet->longitude = $request->longitude;
-       if($request->hasfile('image')){
-        $file= $request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $filename =time().'.'.$extension;
-        $file->move('upload/outlet/',$filename);
-       
-        $outlet->image=$filename;
+
+        $outlet->phone = $request->phone;
+        $outlet->latitude = $request->latitude;
+        $outlet->longitude = $request->longitude;
+           if($request->hasfile('image')){
+                $file= $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $filename =time().'.'.$extension;
+                $file->move('upload/outlet/',$filename);
+            
+                $outlet->image=$filename;
+            //dd($outlet->image);
         
     }
        $outlet->save();
-       // echo "ok"
-       return redirect()->route('addoutlet')->with('success','Data saved successfully');
+  return ["resuslt"=>"Data saved successfully"];
+    //    return redirect()->with('success','Data saved successfully');
    }
 
    //Fetch all data from user table
@@ -81,9 +83,10 @@ class outletController extends Controller
    //userDelete
    public function delete($id)
    {
+       //return $id;
        $outlet = Outlet::find($id);
        $outlet->delete();
-       return redirect()->route('outlet.manage')->with('status','user deleted successfully');
+       return ["result"=>"Deleted"];
    }
    public function map()
    {
