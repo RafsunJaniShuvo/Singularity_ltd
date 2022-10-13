@@ -21,16 +21,20 @@ class userController extends Controller
     //store data into user table
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required',
-            'password' => 'required',
-           
-        ]);
+        
+        
 
         try{
+            $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'pass' => 'required',
+           
+        ]);
+          
             $user=new UserTable;
-         $user->name = $request->name;
+             $user->name = $request->name;
+           // dd($user->name );
          $user->email = $request->email;
          $user->password = $request->pass;
          
@@ -38,10 +42,10 @@ class userController extends Controller
          return response()->json([
             'status' => 'success',
         ]);
-        // // echo "ok"
-        // return redirect()->route('adduser')->with('success','Data saved successfully');
+      
+         //return redirect()->route('adduser')->with('success','Data saved successfully');
         }catch(\Exception $e){
-            return redirect()->back()->with('status','Data saved successfully');
+            //eturn redirect()->back()->with('status','Data Failed To Load');
         }
         
       

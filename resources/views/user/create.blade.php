@@ -72,7 +72,7 @@
                     },
                     error:function(err)
                     {
-                            alert(err);
+                            alert("Failed to Save user");
                         
                     }
                 })

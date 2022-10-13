@@ -51,15 +51,12 @@ class outletController extends Controller
                         }
             $outlet->save();
        
-           // return ["resuslt"=>"Data saved successfully"];
-                    return redirect('/add-outlet')->with('status', 'Data saved successfully!');
-                //  return redirect('/add-outlet')->with('success','Data saved successfully');
-    }catch(\Exception $e){
-        return redirect()->with('error','Failer to save data');
-    }
-    
-
-          
+        // return ["resuslt"=>"Data saved successfully"];
+            return redirect('/add-outlet')->with('status', 'Data saved successfully!');
+            //  return redirect('/add-outlet')->with('success','Data saved successfully');
+        }catch(\Exception $e){
+            return redirect()->with('error','Failer to save data');
+        }  
     }
         
           

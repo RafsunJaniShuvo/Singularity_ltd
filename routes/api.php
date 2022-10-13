@@ -12,7 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+///user
 Route::post('/store-user',[userController::class,'store'])->name('user.store');
 Route::post('/user-update/{id}',[userController::class,'update'])->name('user.update');
 Route::get('/user-delete/{id}',[userController::class,'delete'])->name('user.delete');
