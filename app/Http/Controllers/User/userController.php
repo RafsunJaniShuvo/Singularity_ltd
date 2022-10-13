@@ -70,19 +70,15 @@ class userController extends Controller
     //userUpdate
     public function update(Request $request,$id)
     {
-       
-        User::where('id',$id)->update([
-            'name' => $request->up_name,
-            'email' => $request->up_email,
-            'password' =>$request->up_pass,
-        ]);
         
-    // $product = Product::find($request->up_id);
-    // dd($product);
-    return response()->json([
-        'status' => 'success',
-    ]);
-
+        $data = UserTable::find($id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = $request->password;
+       
+      
+         $data->update();
+        return ["result"=>"Updated"];
     }
 
     //userDelete

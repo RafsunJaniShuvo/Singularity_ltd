@@ -26,8 +26,8 @@
                     </div>
                     @endif
                   </div>
-                  
-                        <input type="text" id="id_up" value="{{$user->id}}" hidden>
+                  <form action="{{route('user.update',$user->id)}}" method="POST">
+                        <input type="text" id="id_up" value="{{$user->id}}" >
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" name="name" id="up_name" placeholder="name" value={{$user->name}}>
@@ -43,7 +43,7 @@
                         <div class="mb-3">
                             <button type="" class="btn btn-primary" id="update">update</button>
                         </div>
-                
+                    </form>
                 </div>
               </div>
         </div>
@@ -54,7 +54,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>
+    {{-- <script>
         $(document).ready(function(){
             $(document).on('click','#update',function(){
                // alert("update");
@@ -75,13 +75,13 @@
                     },
                     error:function(err)
                     {
-                            alert(err);
+                            alert("Failed to update");
                         
                     }
                 })
             }) 
             
         })
-    </script>
+    </script> --}}
   </body>
 </html>
