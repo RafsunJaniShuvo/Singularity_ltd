@@ -14,38 +14,47 @@
     
 
     <div class="container">
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $error }}</strong>
+                </div>
+            @endforeach
+         @endif
         <div class="row d-flex justify-content-center ">
             <div class="card mt-5 col-8">
                 <div class="card-header">
                     Outlet!!!
                 </div>
                 <div class="card-body ">
-                    @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                  </div>
-                  <form action="" method="post" id="upload-image-form" enctype="multipart/form-data">
+                  
+          
+                  <form action="{{route('outlet.store')}}" method="POST"  enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="name">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone Number" required>
                         </div>
                         <div class="mb-3">
                             <label for="Latitude" class="form-label">Latitude</label>
-                            <input type="number" class="form-control" name="latitude" id="latitude" placeholder="Latitude">
+                            <input type="text" class="form-control" name="latitude" id="latitude" placeholder="Latitude" required>
                         </div>
                         <div class="mb-3">
                             <label for="Longitude" class="form-label">Longitude</label>
-                            <input type="number" class="form-control" name="longitude" id="longitude" placeholder="Longitude">
+                            <input type="text" class="form-control" name="longitude" id="longitude" placeholder="Longitude" required>
                         </div>
                         <div class="mb-3">
                             <label for="Image" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="image" id="image" placeholder="Image">
+                            <input type="file" class="form-control" name="image" id="image" placeholder="Image" required>
                         </div>
                         <div class="mb-3">
                             <button type="" class="btn btn-primary" id="save">Save</button>
@@ -56,7 +65,7 @@
         </div>
     </div>
     
-
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

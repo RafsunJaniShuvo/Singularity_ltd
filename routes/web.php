@@ -26,13 +26,16 @@ Route::get('/dashboard', function () {
 
 
 Route::group(['middleware'=>'auth'],function(){
+    //user
     Route::get('/add-user',[userController::class,'index'])->name('adduser');
     Route::get('/manage-user',[userController::class,'manage'])->name('user.manage');
     Route::get('/edit-user/{id}',[userController::class,'edit'])->name('user.edit');
     
     
-    
+    //outlet
     Route::get('/add-outlet',[outletController::class,'index'])->name('addoutlet');
+    Route::get('/manage-outlet',[outletController::class,'manage'])->name('outlet.manage');
+    Route::get('/edit-outlet/{id}',[outletController::class,'edit'])->name('outlet.edit');
 });
 
 

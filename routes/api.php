@@ -14,14 +14,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/store-user',[userController::class,'store'])->name('user.store');
-Route::post('/user-update',[userController::class,'update'])->name('user.update');
+Route::post('/user-update/{id}',[userController::class,'update'])->name('user.update');
 Route::get('/user-delete/{id}',[userController::class,'delete'])->name('user.delete');
 
 
 ///outlet route
 
 Route::post('/store-outlet',[outletController::class,'store'])->name('outlet.store');
-Route::get('/manage-outlet',[outletController::class,'manage'])->name('outlet.manage');
-Route::get('/edit-outlet/{id}',[outletController::class,'edit'])->name('outlet.edit');
 Route::post('/outlet-update/{id}',[outletController::class,'update'])->name('outlet.update');
 Route::get('/outlet-delete/{id}',[outletController::class,'delete'])->name('outlet.delete');
+
