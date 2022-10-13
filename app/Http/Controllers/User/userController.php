@@ -91,7 +91,7 @@ class userController extends Controller
         //dd($request);
         $data = UserTable::find($id);
         $data->delete();
-        return ["result"=>"Deleted user"];
-       // return redirect()->route('user.manage')->with('status','user deleted successfully');
+       // return ["result"=>"Deleted user"];
+        return redirect()->route('user.manage')->with('status','user deleted successfully');
     }
 }
